@@ -2,292 +2,1100 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="HD Service Solutions - Soluciones en Seguridad, Redes y Smart Home en Panamá">
-  <meta name="theme-color" content="#0f172a">
-  <title>HD Service Solutions | Seguridad, Redes y Smart Home en Panamá</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --navy: #0f172a;
-      --cyan: #00c8d7;
-      --cyan-dark: #009fac;
-      --cyan-glow: rgba(0,200,215,0.15);
-      --white: #ffffff;
-      --gray-50: #f8fafc;
-      --gray-100: #f1f5f9;
-      --gray-400: #94a3b8;
-      --gray-600: #475569;
-      --gray-800: #1e293b;
-    }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', Arial, sans-serif; background: var(--white); color: var(--gray-800); line-height: 1.6; }
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(15,23,42,0.95); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: space-between; padding: 14px 40px; border-bottom: 1px solid rgba(0,200,215,0.2); }
-    .nav-logo { height: 44px; }
-    .nav-links { display: flex; gap: 32px; list-style: none; }
-    .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 14px; font-weight: 500; letter-spacing: 0.02em; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--cyan); }
-    .nav-cta { background: var(--cyan); color: var(--navy) !important; padding: 8px 20px; border-radius: 6px; font-weight: 600 !important; }
-    .nav-cta:hover { background: var(--cyan-dark); color: white !important; }
-    header { background: var(--navy); padding: 140px 40px 100px; text-align: center; position: relative; overflow: hidden; }
-    header::before { content: ''; position: absolute; top: -200px; left: 50%; transform: translateX(-50%); width: 700px; height: 700px; background: radial-gradient(circle, rgba(0,200,215,0.12) 0%, transparent 70%); pointer-events: none; }
-    .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(0,200,215,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,200,215,0.05) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none; }
-    .hero-content { position: relative; z-index: 1; }
-    .hero-logo { width: 160px; margin-bottom: 28px; filter: drop-shadow(0 0 20px rgba(0,200,215,0.3)); }
-    .hero-eyebrow { display: inline-block; background: var(--cyan-glow); border: 1px solid rgba(0,200,215,0.4); color: var(--cyan); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; margin-bottom: 24px; }
-    header h1 { font-family: 'Syne', sans-serif; font-size: clamp(36px, 6vw, 62px); font-weight: 800; color: var(--white); line-height: 1.1; margin-bottom: 20px; }
-    header h1 span { color: var(--cyan); }
-    header p { color: rgba(255,255,255,0.65); font-size: 18px; max-width: 560px; margin: 0 auto 36px; }
-    .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-    .btn-primary { background: var(--cyan); color: var(--navy); padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 15px; transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; border: none; cursor: pointer; }
-    .btn-primary:hover { background: var(--cyan-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,200,215,0.3); }
-    .btn-outline { border: 1px solid rgba(255,255,255,0.3); color: white; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 500; font-size: 15px; transition: all 0.2s; background: transparent; cursor: pointer; }
-    .btn-outline:hover { border-color: var(--cyan); color: var(--cyan); }
-    .stats { background: var(--gray-50); border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; padding: 40px 20px; }
-    .stats-inner { max-width: 900px; margin: auto; display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; }
-    .stat { text-align: center; }
-    .stat-num { font-family: 'Syne', sans-serif; font-size: 38px; font-weight: 800; color: var(--navy); line-height: 1; }
-    .stat-num span { color: var(--cyan); }
-    .stat-label { font-size: 13px; color: var(--gray-600); margin-top: 4px; }
-    section { padding: 80px 20px; }
-    .section-inner { max-width: 1100px; margin: auto; }
-    .section-label { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cyan); margin-bottom: 12px; }
-    .section-title { font-family: 'Syne', sans-serif; font-size: clamp(28px, 4vw, 42px); font-weight: 800; color: var(--navy); line-height: 1.15; margin-bottom: 16px; }
-    .section-sub { color: var(--gray-600); font-size: 17px; max-width: 520px; }
-    #servicios { background: var(--white); }
-    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 48px; }
-    .card { background: var(--gray-50); border: 1px solid #e2e8f0; border-radius: 14px; padding: 36px; transition: all 0.25s; position: relative; overflow: hidden; }
-    .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--cyan); transform: scaleX(0); transition: transform 0.3s; }
-    .card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(15,23,42,0.1); border-color: var(--cyan); }
-    .card:hover::before { transform: scaleX(1); }
-    .card-icon { font-size: 32px; margin-bottom: 16px; }
-    .card h3 { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 16px; }
-    .card ul { list-style: none; padding: 0; margin-bottom: 24px; }
-    .card ul li { padding: 6px 0; color: var(--gray-600); font-size: 14px; display: flex; align-items: center; gap: 8px; }
-    .card ul li::before { content: '→'; color: var(--cyan); font-weight: 700; }
-    .btn-card { display: inline-flex; align-items: center; gap: 6px; background: var(--navy); color: white; padding: 10px 20px; border-radius: 7px; text-decoration: none; font-size: 13px; font-weight: 600; transition: all 0.2s; border: none; cursor: pointer; }
-    .btn-card:hover { background: var(--cyan); color: var(--navy); }
-    #porque { background: var(--navy); }
-    #porque .section-title { color: white; }
-    #porque .section-sub { color: rgba(255,255,255,0.6); }
-    .razones { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; margin-top: 48px; }
-    .razon { background: rgba(255,255,255,0.05); border: 1px solid rgba(0,200,215,0.2); border-radius: 12px; padding: 28px; transition: background 0.2s; }
-    .razon:hover { background: rgba(0,200,215,0.08); }
-    .razon-icon { font-size: 28px; margin-bottom: 12px; }
-    .razon h4 { color: white; font-weight: 600; font-size: 16px; margin-bottom: 8px; }
-    .razon p { color: rgba(255,255,255,0.55); font-size: 14px; line-height: 1.5; }
-    #contacto { background: var(--gray-50); }
-    .contacto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-top: 48px; }
-    .contacto-item { display: flex; align-items: center; gap: 16px; padding: 20px 0; border-bottom: 1px solid #e2e8f0; }
-    .contacto-item:last-child { border-bottom: none; }
-    .contacto-icono { width: 48px; height: 48px; background: var(--cyan-glow); border: 1px solid rgba(0,200,215,0.3); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
-    .contacto-texto p:first-child { font-size: 12px; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
-    .contacto-texto a, .contacto-texto span { font-size: 16px; font-weight: 600; color: var(--navy); text-decoration: none; }
-    .contacto-texto a:hover { color: var(--cyan); }
-    .contacto-cta { background: var(--navy); border-radius: 16px; padding: 40px; text-align: center; }
-    .contacto-cta h3 { font-family: 'Syne', sans-serif; color: white; font-size: 24px; margin-bottom: 12px; }
-    .contacto-cta p { color: rgba(255,255,255,0.6); margin-bottom: 24px; font-size: 15px; }
-    footer { background: #060d1a; color: rgba(255,255,255,0.5); text-align: center; padding: 28px 20px; font-size: 13px; }
-    footer span { color: var(--cyan); }
-    .whatsapp-float { position: fixed; bottom: 28px; right: 28px; background: #25D366; width: 58px; height: 58px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 26px; box-shadow: 0 4px 20px rgba(37,211,102,0.4); transition: transform 0.2s, box-shadow 0.2s; z-index: 200; }
-    .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.5); }
-    @media (max-width: 768px) {
-      nav { padding: 12px 20px; }
-      .nav-links { display: none; }
-      header { padding: 110px 20px 70px; }
-      .stats-inner { gap: 32px; }
-      .contacto-grid { grid-template-columns: 1fr; gap: 32px; }
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO Primary -->
+  <title>HD Service Solutions | Seguridad Electrónica y Redes Empresariales en Panamá</title>
+  <meta name="description" content="HD Service Solutions — Especialistas en videovigilancia, control de acceso, redes empresariales, cableado estructurado, telefonía IP y automatización residencial en Panamá y Panamá Oeste.">
+  <meta name="keywords" content="cámaras de seguridad Panamá, videovigilancia Panamá, control de acceso Panamá, redes empresariales Panamá, cableado estructurado Panamá, telefonía IP Panamá, Smart Home Panamá, soporte técnico Panamá, seguridad electrónica Panamá, automatización residencial Panamá">
+  <meta name="author" content="HD Service Solutions">
+  <meta name="robots" content="index, follow">
+  <meta name="geo.region" content="PA">
+  <meta name="geo.placename" content="Panamá">
+  <meta name="language" content="es">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="HD Service Solutions | Seguridad Electrónica y Redes en Panamá">
+  <meta property="og:description" content="Soluciones profesionales en videovigilancia, control de acceso, redes, telefonía IP y automatización para empresas y residencias en Panamá.">
+  <meta property="og:image" content="/logo.png">
+  <meta property="og:url" content="https://hdservicepty.netlify.app">
+  <meta property="og:locale" content="es_PA">
+  <meta property="og:site_name" content="HD Service Solutions">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="HD Service Solutions | Seguridad Electrónica en Panamá">
+  <meta name="twitter:description" content="Especialistas en videovigilancia, redes y automatización en Panamá.">
+  <meta name="twitter:image" content="/logo.png">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://hdservicepty.netlify.app">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/logo.png">
+
+  <!-- Google Fonts: Montserrat + Roboto -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Google Analytics — replace GA_MEASUREMENT_ID with your ID to activate -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'GA_MEASUREMENT_ID');
+  </script>
+  -->
+
+  <!-- Structured Data / Local Business -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "HD Service Solutions",
+    "description": "Soluciones profesionales en seguridad electrónica y redes empresariales en Panamá",
+    "telephone": "+507-6231-5402",
+    "url": "https://hdservicepty.netlify.app",
+    "sameAs": ["https://www.instagram.com/hdservicesolutionspty"],
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "Panamá",
+      "addressCountry": "PA"
+    },
+    "areaServed": [
+      {"@type": "City", "name": "Panamá"},
+      {"@type": "City", "name": "Panamá Oeste"}
+    ],
+    "serviceType": [
+      "Videovigilancia IP",
+      "Control de Acceso",
+      "Redes Empresariales",
+      "Cableado Estructurado",
+      "Telefonía IP",
+      "Automatización Residencial",
+      "Soporte Técnico",
+      "Mantenimiento Preventivo"
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<nav>
-  <img src="images/logo_nav.png" alt="HD Service Solutions" class="nav-logo">
-  <ul class="nav-links">
-    <li><a href="#servicios">Servicios</a></li>
-    <li><a href="#porque">Nosotros</a></li>
-    <li><a href="#contacto">Contacto</a></li>
-    <li><a href="https://wa.me/50762315402?text=Hola%20HD%20Service%20Solutions,%20deseo%20una%20cotización." class="nav-cta">Cotizar ahora</a></li>
-  </ul>
+
+<!-- ═══════════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════════ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="#hero" class="nav-logo">
+      <img src="logo.png" alt="HD Service Solutions">
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu" id="navMenu" role="list">
+      <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
+      <li><a href="#paquetes" class="nav-link">Paquetes</a></li>
+      <li><a href="#beneficios" class="nav-link">Beneficios</a></li>
+      <li><a href="#galeria" class="nav-link">Proyectos</a></li>
+      <li><a href="#consejos" class="nav-link">Consejos</a></li>
+      <li><a href="#contacto" class="nav-link">Contacto</a></li>
+      <li>
+        <a href="https://wa.me/50762315402?text=Hola%20HD%20Service%20Solutions%2C%20deseo%20solicitar%20una%20cotización."
+           class="nav-cta" target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Cotizar
+        </a>
+      </li>
+    </ul>
+  </div>
 </nav>
 
-<header>
-  <div class="hero-grid"></div>
+<!-- ═══════════════════════════════════════════
+     HERO SECTION
+═══════════════════════════════════════════ -->
+<section id="hero" class="hero">
+  <!-- Circuit board SVG background pattern -->
+  <div class="hero-bg" aria-hidden="true">
+    <svg class="hero-circuit" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
+      <g opacity="0.12" stroke="#00c8d7" fill="none" stroke-width="1.5">
+        <polyline points="0,180 180,180 180,380 360,380 360,260 580,260 580,480 780,480 780,180 980,180 980,580 1160,580 1160,380 1440,380"/>
+        <polyline points="80,0 80,120 300,120"/>
+        <polyline points="460,0 460,80 680,80 680,0"/>
+        <polyline points="860,0 860,300"/>
+        <polyline points="1100,0 1100,220 1300,220 1300,0"/>
+        <polyline points="0,520 260,520 260,680 440,680"/>
+        <polyline points="620,680 620,580"/>
+        <polyline points="900,580 900,700 1060,700 1060,800"/>
+        <polyline points="1220,580 1220,800"/>
+        <polyline points="1380,380 1440,380"/>
+      </g>
+      <g fill="#00c8d7" opacity="0.2">
+        <circle cx="180" cy="180" r="5"/>
+        <circle cx="180" cy="380" r="5"/>
+        <circle cx="360" cy="380" r="5"/>
+        <circle cx="360" cy="260" r="5"/>
+        <circle cx="580" cy="260" r="5"/>
+        <circle cx="580" cy="480" r="5"/>
+        <circle cx="780" cy="480" r="5"/>
+        <circle cx="780" cy="180" r="5"/>
+        <circle cx="980" cy="180" r="5"/>
+        <circle cx="980" cy="580" r="5"/>
+        <circle cx="1160" cy="580" r="5"/>
+        <circle cx="1160" cy="380" r="5"/>
+        <circle cx="80" cy="120" r="4"/>
+        <circle cx="300" cy="120" r="4"/>
+        <circle cx="460" cy="80" r="4"/>
+        <circle cx="680" cy="80" r="4"/>
+        <circle cx="860" cy="300" r="4"/>
+        <circle cx="1100" cy="220" r="4"/>
+        <circle cx="1300" cy="220" r="4"/>
+        <circle cx="260" cy="520" r="4"/>
+        <circle cx="260" cy="680" r="4"/>
+        <circle cx="900" cy="580" r="4"/>
+        <circle cx="1060" cy="700" r="4"/>
+      </g>
+    </svg>
+    <div class="hero-glow hero-glow-1"></div>
+    <div class="hero-glow hero-glow-2"></div>
+  </div>
+
   <div class="hero-content">
-    <img src="images/logo_hero.png" alt="HD Service Solutions" class="hero-logo">
-    <div class="hero-eyebrow">Soluciones Inteligentes</div>
-    <h1>Seguridad, Redes y <span>Smart Home</span></h1>
-    <p>Protege tu hogar y negocio con las mejores soluciones tecnológicas en Panamá. Instalación profesional y soporte 24/7.</p>
-    <div class="hero-btns">
-      <a href="#servicios" class="btn-primary">Ver Servicios</a>
-      <a href="https://wa.me/50762315402?text=Hola%20HD%20Service%20Solutions,%20deseo%20una%20cotización." class="btn-outline">Contactar</a>
+    <img src="logo.png" alt="HD Service Solutions" class="hero-logo">
+    <h1 class="hero-title">
+      Soluciones Profesionales en<br>
+      <span class="hero-accent">Seguridad Electrónica y Redes</span>
+    </h1>
+    <p class="hero-subtitle">
+      Instalación, soporte y mantenimiento de sistemas de videovigilancia,<br>
+      control de acceso, redes, telefonía IP y automatización.
+    </p>
+    <div class="hero-badges">
+      <span class="badge">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="14" height="14" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        Panamá y Panamá Oeste
+      </span>
+      <span class="badge">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="14" height="14" aria-hidden="true"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg>
+        Tecnología Confiable
+      </span>
+      <span class="badge">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="14" height="14" aria-hidden="true"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
+        Respuesta Rápida
+      </span>
+    </div>
+    <div class="hero-buttons">
+      <a href="https://wa.me/50762315402?text=Hola%20HD%20Service%20Solutions%2C%20deseo%20solicitar%20una%20cotización."
+         class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Solicitar Cotización
+      </a>
+      <a href="https://wa.me/50762315402?text=Hola%20HD%20Service%20Solutions%2C%20deseo%20solicitar%20una%20evaluación%20técnica%20gratuita."
+         class="btn btn-outline" target="_blank" rel="noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        Solicitar Evaluación Técnica
+      </a>
+    </div>
+    <div class="hero-scroll" aria-hidden="true">
+      <span></span>
     </div>
   </div>
-</header>
+</section>
 
-<div class="stats">
-  <div class="stats-inner">
-    <div class="stat">
-      <div class="stat-num"><span>500</span>+</div>
-      <div class="stat-label">Clientes Satisfechos</div>
+<!-- ═══════════════════════════════════════════
+     SOBRE NOSOTROS
+═══════════════════════════════════════════ -->
+<section id="nosotros" class="nosotros section-padding">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Quiénes Somos</span>
+      <h2>Sobre HD Service Solutions</h2>
+      <div class="section-line"></div>
     </div>
-    <div class="stat">
-      <div class="stat-num"><span>15</span>+</div>
-      <div class="stat-label">Años de Experiencia</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num"><span>24</span>/7</div>
-      <div class="stat-label">Soporte Disponible</div>
-    </div>
-  </div>
-</div>
 
-<section id="servicios">
-  <div class="section-inner">
-    <div class="section-label">Nuestros Servicios</div>
-    <h2 class="section-title">Soluciones Completas para tu Seguridad</h2>
-    <p class="section-sub">Ofrecemos una amplia gama de servicios diseñados para proteger lo que más importa.</p>
-    
-    <div class="cards">
-      <div class="card">
-        <div class="card-icon">🔒</div>
-        <h3>Sistemas de Seguridad</h3>
-        <ul>
-          <li>Cámaras CCTV HD</li>
-          <li>Alarmas inteligentes</li>
-          <li>Control de acceso</li>
-          <li>Monitoreo 24/7</li>
-        </ul>
-        <a href="https://wa.me/50762315402?text=Interesado%20en%20sistemas%20de%20seguridad" class="btn-card">Más información</a>
+    <div class="nosotros-grid">
+      <div class="nosotros-text reveal">
+        <p class="nosotros-lead">
+          HD Service Solutions es una empresa especializada en soluciones tecnológicas para empresas y residencias.
+        </p>
+        <p class="nosotros-body">
+          Diseñamos, instalamos y mantenemos sistemas de videovigilancia, control de acceso, redes de datos, telefonía IP y automatización, ofreciendo soluciones confiables adaptadas a las necesidades de cada cliente.
+        </p>
+        <div class="nosotros-stats">
+          <div class="stat-item">
+            <strong>100%</strong>
+            <span>Compromiso</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <strong>Panamá</strong>
+            <span>y Panamá Oeste</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <strong>Expertos</strong>
+            <span>Certificados</span>
+          </div>
+        </div>
+        <a href="https://wa.me/50762315402?text=Hola%20HD%20Service%20Solutions%2C%20deseo%20más%20información%20sobre%20sus%20servicios."
+           class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+          Consultar ahora
+        </a>
       </div>
-      
-      <div class="card">
-        <div class="card-icon">🌐</div>
-        <h3>Redes y Conectividad</h3>
-        <ul>
-          <li>Instalación de redes</li>
-          <li>WiFi profesional</li>
-          <li>Fibra óptica</li>
-          <li>Mantenimiento técnico</li>
-        </ul>
-        <a href="https://wa.me/50762315402?text=Interesado%20en%20servicios%20de%20redes" class="btn-card">Más información</a>
-      </div>
-      
-      <div class="card">
-        <div class="card-icon">🏠</div>
-        <h3>Smart Home</h3>
-        <ul>
-          <li>Automatización del hogar</li>
-          <li>Control de iluminación</li>
-          <li>Climatización inteligente</li>
-          <li>Integración de dispositivos</li>
-        </ul>
-        <a href="https://wa.me/50762315402?text=Interesado%20en%20smart%20home" class="btn-card">Más información</a>
+
+      <div class="nosotros-services reveal">
+        <div class="service-icon-grid">
+          <div class="service-icon-item">
+            <div class="svc-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
+            </div>
+            <span>Videovigilancia</span>
+          </div>
+          <div class="service-icon-item">
+            <div class="svc-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM12 17c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2z"/></svg>
+            </div>
+            <span>Control de Acceso</span>
+          </div>
+          <div class="service-icon-item">
+            <div class="svc-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
+            </div>
+            <span>Redes Empresariales</span>
+          </div>
+          <div class="service-icon-item">
+            <div class="svc-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 7h-3V4c0-1.1-.9-2-2-2H9c-1.1 0-2 .9-2 2v3H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zM9 4h6v3H9V4z"/></svg>
+            </div>
+            <span>Cableado Estructurado</span>
+          </div>
+          <div class="service-icon-item">
+            <div class="svc-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            </div>
+            <span>Telefonía IP</span>
+          </div>
+          <div class="service-icon-item">
+            <div class="svc-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            </div>
+            <span>Smart Home</span>
+          </div>
+          <div class="service-icon-item">
+            <div class="svc-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
+            </div>
+            <span>Soporte Técnico</span>
+          </div>
+          <div class="service-icon-item">
+            <div class="svc-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+            </div>
+            <span>Mantenimiento</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="porque">
-  <div class="section-inner">
-    <div class="section-label">Por qué elegirnos</div>
-    <h2 class="section-title">Razones para confiar en HD Service</h2>
-    <p class="section-sub">Somos líderes en soluciones tecnológicas en Panamá con un compromiso inquebrantable con la calidad.</p>
-    
-    <div class="razones">
-      <div class="razon">
-        <div class="razon-icon">⭐</div>
-        <h4>Profesionales Certificados</h4>
-        <p>Equipo altamente capacitado con certificaciones internacionales en seguridad y redes.</p>
+<!-- ═══════════════════════════════════════════
+     PAQUETES PRINCIPALES
+═══════════════════════════════════════════ -->
+<section id="paquetes" class="paquetes section-padding bg-light">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Nuestros Paquetes</span>
+      <h2>Soluciones para su Negocio</h2>
+      <div class="section-line"></div>
+      <p class="section-desc">Paquetes diseñados para cubrir las necesidades tecnológicas de su empresa en Panamá</p>
+    </div>
+
+    <div class="packages-grid">
+      <!-- PAQUETE 1: PYME SEGURA -->
+      <div class="package-card reveal">
+        <div class="package-accent"></div>
+        <div class="package-icon-wrap">
+          <div class="pkg-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
+          </div>
+        </div>
+        <div class="package-label">PYME</div>
+        <h3 class="package-name">PYME Segura</h3>
+        <p class="package-desc">Protección y control completo para su negocio.</p>
+        <ul class="package-features">
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            Cámaras de seguridad
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            Videovigilancia IP
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            Control de acceso
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            Videoporteros
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            Cerraduras inteligentes
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            Acceso remoto
+          </li>
+        </ul>
+        <a href="https://wa.me/50762315402?text=Hola%20HD%20Service%20Solutions%2C%20estoy%20interesado%20en%20el%20paquete%20PYME%20Segura.%20Deseo%20solicitar%20una%20evaluación%20técnica."
+           class="btn btn-package" target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Solicitar Evaluación
+        </a>
       </div>
-      
-      <div class="razon">
-        <div class="razon-icon">🎯</div>
-        <h4>Soluciones Personalizadas</h4>
-        <p>Adaptamos cada proyecto a tus necesidades específicas y presupuesto.</p>
+
+      <!-- PAQUETE 2: PYME CONECTADA (DESTACADO) -->
+      <div class="package-card featured reveal">
+        <div class="featured-ribbon">Más Popular</div>
+        <div class="package-accent"></div>
+        <div class="package-icon-wrap">
+          <div class="pkg-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
+          </div>
+        </div>
+        <div class="package-label">PYME</div>
+        <h3 class="package-name">PYME Conectada</h3>
+        <p class="package-desc">Infraestructura tecnológica confiable para su empresa.</p>
+        <ul class="package-features">
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            Redes empresariales
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            WiFi profesional
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            Cableado estructurado
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            Telefonía IP
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            Racks y gabinetes
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            Optimización de redes
+          </li>
+        </ul>
+        <a href="https://wa.me/50762315402?text=Hola%20HD%20Service%20Solutions%2C%20estoy%20interesado%20en%20el%20paquete%20PYME%20Conectada.%20Deseo%20solicitar%20una%20cotización."
+           class="btn btn-package" target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Solicitar Cotización
+        </a>
       </div>
-      
-      <div class="razon">
-        <div class="razon-icon">🛡️</div>
-        <h4>Garantía Completa</h4>
-        <p>Garantía en equipos y servicios con soporte técnico permanente.</p>
-      </div>
-      
-      <div class="razon">
-        <div class="razon-icon">⚡</div>
-        <h4>Instalación Rápida</h4>
-        <p>Instalación eficiente sin interrupciones en tu operación diaria.</p>
-      </div>
-      
-      <div class="razon">
-        <div class="razon-icon">💬</div>
-        <h4>Atención al Cliente</h4>
-        <p>Soporte 24/7 disponible para resolver cualquier inconveniente.</p>
-      </div>
-      
-      <div class="razon">
-        <div class="razon-icon">📱</div>
-        <h4>Tecnología Moderna</h4>
-        <p>Utilizamos las últimas tecnologías en seguridad e integración smart home.</p>
+
+      <!-- PAQUETE 3: MANTENIMIENTO INTEGRAL HD -->
+      <div class="package-card reveal">
+        <div class="package-accent"></div>
+        <div class="package-icon-wrap">
+          <div class="pkg-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
+          </div>
+        </div>
+        <div class="package-label">HD</div>
+        <h3 class="package-name">Mantenimiento Integral HD</h3>
+        <p class="package-desc">Mantenga sus sistemas siempre operativos y sin interrupciones.</p>
+        <ul class="package-features">
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            Mantenimiento preventivo
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            Mantenimiento correctivo
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            Diagnóstico técnico
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            Soporte remoto
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            Optimización tecnológica
+          </li>
+        </ul>
+        <a href="https://wa.me/50762315402?text=Hola%20HD%20Service%20Solutions%2C%20estoy%20interesado%20en%20el%20Mantenimiento%20Integral%20HD.%20Deseo%20consultar%20los%20planes%20disponibles."
+           class="btn btn-package" target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Consultar Planes
+        </a>
       </div>
     </div>
   </div>
 </section>
 
-<section id="contacto">
-  <div class="section-inner">
-    <div class="section-label">Contacto</div>
-    <h2 class="section-title">¿Listo para empezar?</h2>
-    
-    <div class="contacto-grid">
-      <div>
-        <div class="contacto-item">
-          <div class="contacto-icono">📞</div>
-          <div class="contacto-texto">
-            <p>Teléfono</p>
-            <a href="tel:+50762315402">+507 6231-5402</a>
-          </div>
+<!-- ═══════════════════════════════════════════
+     BENEFICIOS
+═══════════════════════════════════════════ -->
+<section id="beneficios" class="beneficios section-padding">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Por Qué Elegirnos</span>
+      <h2>¿Por qué elegir HD Service Solutions?</h2>
+      <div class="section-line"></div>
+      <p class="section-desc">Comprometidos con la excelencia y la satisfacción de cada cliente</p>
+    </div>
+
+    <div class="benefits-grid">
+      <div class="benefit-card reveal">
+        <div class="benefit-icon-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
         </div>
-        
-        <div class="contacto-item">
-          <div class="contacto-icono">💬</div>
-          <div class="contacto-texto">
-            <p>WhatsApp</p>
-            <a href="https://wa.me/50762315402">+507 6231-5402</a>
-          </div>
-        </div>
-        
-        <div class="contacto-item">
-          <div class="contacto-icono">📧</div>
-          <div class="contacto-texto">
-            <p>Email</p>
-            <a href="mailto:info@hdservice.com">info@hdservice.com</a>
-          </div>
-        </div>
-        
-        <div class="contacto-item">
-          <div class="contacto-icono">📍</div>
-          <div class="contacto-texto">
-            <p>Ubicación</p>
-            <span>Panamá, Panamá</span>
-          </div>
-        </div>
+        <h3>Atención Personalizada</h3>
+        <p>Cada proyecto recibe atención dedicada, con soluciones adaptadas a las necesidades específicas de su empresa o residencia.</p>
       </div>
-      
-      <div class="contacto-cta">
-        <h3>Solicita una Cotización</h3>
-        <p>Contáctanos hoy mismo para una consulta gratuita y descubre cómo podemos ayudarte.</p>
-        <a href="https://wa.me/50762315402?text=Hola%20HD%20Service%20Solutions,%20deseo%20una%20cotización." class="btn-primary">Enviar Mensaje</a>
+
+      <div class="benefit-card reveal">
+        <div class="benefit-icon-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
+        </div>
+        <h3>Soporte Técnico Especializado</h3>
+        <p>Nuestro equipo de técnicos certificados está preparado para resolver cualquier inconveniente con eficiencia y rapidez.</p>
+      </div>
+
+      <div class="benefit-card reveal">
+        <div class="benefit-icon-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+        </div>
+        <h3>Tecnología Confiable</h3>
+        <p>Utilizamos equipos y soluciones de marcas líderes para garantizar durabilidad, rendimiento y máxima seguridad.</p>
+      </div>
+
+      <div class="benefit-card reveal">
+        <div class="benefit-icon-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2.05v2.02c3.95.49 7 3.85 7 7.93 0 3.21-1.81 6-4.72 7.72L13 17v5h5l-1.22-1.22C19.91 19.07 22 15.76 22 12c0-5.18-3.95-9.45-9-9.95zM11 2.05C5.95 2.55 2 6.82 2 12c0 3.76 2.09 7.07 5.22 8.78L6 22h5V2.05z"/></svg>
+        </div>
+        <h3>Respuesta Rápida</h3>
+        <p>Atendemos sus solicitudes con agilidad para minimizar el impacto en la operación de su negocio.</p>
+      </div>
+
+      <div class="benefit-card reveal">
+        <div class="benefit-icon-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg>
+        </div>
+        <h3>Empresas y Residencias</h3>
+        <p>Soluciones para todo tipo de cliente, desde pequeños negocios hasta proyectos residenciales de alta gama.</p>
+      </div>
+
+      <div class="benefit-card reveal">
+        <div class="benefit-icon-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        </div>
+        <h3>Soluciones Adaptadas</h3>
+        <p>Diseñamos cada proyecto según sus requisitos específicos, presupuesto y objetivos, sin soluciones genéricas.</p>
       </div>
     </div>
   </div>
 </section>
 
-<footer>
-  <p>&copy; 2024 HD Service Solutions. Todos los derechos reservados. | Diseñado con <span>❤️</span> para Panamá</p>
+<!-- ═══════════════════════════════════════════
+     GALERÍA DE PROYECTOS
+═══════════════════════════════════════════ -->
+<section id="galeria" class="galeria section-padding bg-dark">
+  <div class="container">
+    <div class="section-header section-header--light">
+      <span class="section-tag">Portafolio</span>
+      <h2>Galería de Proyectos</h2>
+      <div class="section-line"></div>
+      <p class="section-desc section-desc--light">Proyectos realizados en Panamá y Panamá Oeste</p>
+    </div>
+
+    <div class="gallery-filters" role="group" aria-label="Filtrar proyectos">
+      <button class="filter-btn active" data-filter="all">Todos</button>
+      <button class="filter-btn" data-filter="videovigilancia">Videovigilancia</button>
+      <button class="filter-btn" data-filter="acceso">Control de Acceso</button>
+      <button class="filter-btn" data-filter="redes">Redes</button>
+      <button class="filter-btn" data-filter="cableado">Cableado</button>
+      <button class="filter-btn" data-filter="telefonia">Telefonía IP</button>
+      <button class="filter-btn" data-filter="smarthome">Smart Home</button>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-item reveal" data-category="videovigilancia">
+        <div class="gallery-placeholder gp-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
+        </div>
+        <div class="gallery-overlay">
+          <span class="gallery-cat-tag">Videovigilancia</span>
+          <p>Sistema de cámaras IP para empresa comercial</p>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal" data-category="acceso">
+        <div class="gallery-placeholder gp-2">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM12 17c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2z"/></svg>
+        </div>
+        <div class="gallery-overlay">
+          <span class="gallery-cat-tag">Control de Acceso</span>
+          <p>Sistema biométrico y tarjetas RFID</p>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal" data-category="redes">
+        <div class="gallery-placeholder gp-3">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
+        </div>
+        <div class="gallery-overlay">
+          <span class="gallery-cat-tag">Redes Empresariales</span>
+          <p>Infraestructura de red corporativa</p>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal" data-category="cableado">
+        <div class="gallery-placeholder gp-4">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 7h-3V4c0-1.1-.9-2-2-2H9c-1.1 0-2 .9-2 2v3H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zM9 4h6v3H9V4z"/></svg>
+        </div>
+        <div class="gallery-overlay">
+          <span class="gallery-cat-tag">Cableado Estructurado</span>
+          <p>Rack y cableado Cat6A certificado</p>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal" data-category="telefonia">
+        <div class="gallery-placeholder gp-5">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        </div>
+        <div class="gallery-overlay">
+          <span class="gallery-cat-tag">Telefonía IP</span>
+          <p>Central VoIP empresarial</p>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal" data-category="smarthome">
+        <div class="gallery-placeholder gp-6">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+        </div>
+        <div class="gallery-overlay">
+          <span class="gallery-cat-tag">Smart Home</span>
+          <p>Automatización residencial inteligente</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="gallery-note">Las imágenes de proyectos reales estarán disponibles próximamente</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CONSEJOS TECNOLÓGICOS
+═══════════════════════════════════════════ -->
+<section id="consejos" class="consejos section-padding bg-light">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Blog</span>
+      <h2>Consejos Tecnológicos</h2>
+      <div class="section-line"></div>
+      <p class="section-desc">Aprenda cómo proteger y optimizar la tecnología de su empresa</p>
+    </div>
+
+    <div class="tips-grid">
+      <!-- Artículo 1 -->
+      <article class="tip-card reveal">
+        <div class="tip-image-wrap">
+          <div class="tip-image-bg tip-bg-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
+          </div>
+          <span class="tip-cat-badge tip-cat-security">Seguridad</span>
+        </div>
+        <div class="tip-body">
+          <h3>5 consejos para mejorar la seguridad de su negocio</h3>
+          <ul class="tip-list">
+            <li>Instale cámaras en puntos estratégicos de alta visibilidad</li>
+            <li>Implemente control de acceso con registro de entradas y salidas</li>
+            <li>Configure alertas de movimiento y notificaciones en tiempo real</li>
+            <li>Realice mantenimiento periódico de sus equipos de seguridad</li>
+            <li>Capacite a su personal en el uso correcto de los sistemas</li>
+          </ul>
+          <a href="https://wa.me/50762315402?text=Hola%20HD%20Service%20Solutions%2C%20quiero%20mejorar%20la%20seguridad%20de%20mi%20negocio."
+             class="tip-link" target="_blank" rel="noopener noreferrer">
+            Consultar con un experto
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Artículo 2 -->
+      <article class="tip-card reveal">
+        <div class="tip-image-wrap">
+          <div class="tip-image-bg tip-bg-2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
+          </div>
+          <span class="tip-cat-badge tip-cat-network">Conectividad</span>
+        </div>
+        <div class="tip-body">
+          <h3>5 consejos para optimizar la conectividad de su empresa</h3>
+          <ul class="tip-list">
+            <li>Segmente su red empresarial para mayor seguridad y rendimiento</li>
+            <li>Implemente WiFi profesional con cobertura total en sus instalaciones</li>
+            <li>Use cableado estructurado Cat6 o superior para máxima velocidad</li>
+            <li>Configure VLANs para separar tráfico de empleados y visitantes</li>
+            <li>Monitoree el uso de su red para detectar cuellos de botella</li>
+          </ul>
+          <a href="https://wa.me/50762315402?text=Hola%20HD%20Service%20Solutions%2C%20quiero%20optimizar%20la%20conectividad%20de%20mi%20empresa."
+             class="tip-link" target="_blank" rel="noopener noreferrer">
+            Solicitar diagnóstico
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Artículo 3 -->
+      <article class="tip-card reveal">
+        <div class="tip-image-wrap">
+          <div class="tip-image-bg tip-bg-3">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
+          </div>
+          <span class="tip-cat-badge tip-cat-maintenance">Mantenimiento</span>
+        </div>
+        <div class="tip-body">
+          <h3>5 consejos para evitar fallas costosas con mantenimiento preventivo</h3>
+          <ul class="tip-list">
+            <li>Programe revisiones técnicas periódicas de todos sus equipos</li>
+            <li>Limpie regularmente cámaras, sensores y equipos de red</li>
+            <li>Actualice el firmware de sus dispositivos para evitar vulnerabilidades</li>
+            <li>Documente el historial de mantenimiento para cada equipo</li>
+            <li>Contrate un plan de mantenimiento preventivo anual con expertos</li>
+          </ul>
+          <a href="https://wa.me/50762315402?text=Hola%20HD%20Service%20Solutions%2C%20me%20interesa%20un%20plan%20de%20mantenimiento%20preventivo."
+             class="tip-link" target="_blank" rel="noopener noreferrer">
+            Ver planes de mantenimiento
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+          </a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     TESTIMONIOS
+═══════════════════════════════════════════ -->
+<section id="testimonios" class="testimonios section-padding">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Testimonios</span>
+      <h2>Lo que dicen nuestros clientes</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+        <blockquote>
+          "Excelente servicio. Instalaron el sistema de videovigilancia en nuestra empresa en tiempo récord y el resultado fue impecable. Muy profesionales y atentos en todo momento."
+        </blockquote>
+        <div class="testimonial-author">
+          <div class="author-avatar" aria-hidden="true">JM</div>
+          <div class="author-info">
+            <strong>Juan Martínez</strong>
+            <span>Propietario, Distribuidora JM — Panamá</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card testimonial-featured reveal">
+        <div class="testimonial-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+        <blockquote>
+          "Contratamos a HD Service Solutions para instalar la red empresarial y el sistema de telefonía IP. La atención fue personalizada y los resultados superaron nuestras expectativas."
+        </blockquote>
+        <div class="testimonial-author">
+          <div class="author-avatar" aria-hidden="true">CR</div>
+          <div class="author-info">
+            <strong>Carlos Rodríguez</strong>
+            <span>Gerente General, Comercial CR — Panamá Oeste</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+        <blockquote>
+          "El mantenimiento preventivo que realizan es de primera. Desde que contratamos su servicio no hemos tenido ninguna falla en nuestros sistemas. Los recomiendo totalmente."
+        </blockquote>
+        <div class="testimonial-author">
+          <div class="author-avatar" aria-hidden="true">AL</div>
+          <div class="author-info">
+            <strong>Ana López</strong>
+            <span>Directora, AL Group — Panamá</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonials-cta">
+      <p>¿Listo para transformar la tecnología de su negocio?</p>
+      <a href="https://wa.me/50762315402?text=Hola%20HD%20Service%20Solutions%2C%20deseo%20solicitar%20una%20cotización."
+         class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Contáctenos Ahora
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CONTACTO
+═══════════════════════════════════════════ -->
+<section id="contacto" class="contacto section-padding bg-light">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Contacto</span>
+      <h2>Contáctenos</h2>
+      <div class="section-line"></div>
+      <p class="section-desc">Estamos listos para atender su consulta y ofrecerle la mejor solución</p>
+    </div>
+
+    <div class="contact-grid">
+      <!-- Contact Info -->
+      <div class="contact-info reveal">
+        <h3>Información de Contacto</h3>
+
+        <div class="contact-item">
+          <div class="contact-icon ci-whatsapp">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </div>
+          <div>
+            <strong>WhatsApp</strong>
+            <a href="https://wa.me/50762315402" target="_blank" rel="noopener noreferrer">+507 6231-5402</a>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon ci-instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </div>
+          <div>
+            <strong>Instagram</strong>
+            <a href="https://www.instagram.com/hdservicesolutionspty" target="_blank" rel="noopener noreferrer">@hdservicesolutionspty</a>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon ci-location">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          </div>
+          <div>
+            <strong>Cobertura</strong>
+            <span>Panamá y Panamá Oeste</span>
+          </div>
+        </div>
+
+        <div class="contact-wa-btn-wrap">
+          <a href="https://wa.me/50762315402?text=Hola%20HD%20Service%20Solutions%2C%20deseo%20solicitar%20una%20cotización."
+             class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Escribir por WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form-wrap reveal">
+        <form
+          name="contacto"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          class="contact-form"
+          id="contactForm"
+          novalidate
+        >
+          <input type="hidden" name="form-name" value="contacto">
+          <p class="form-honeypot" aria-hidden="true">
+            <label>No llenar: <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+          </p>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nombre">Nombre <span class="req" aria-hidden="true">*</span></label>
+              <input type="text" id="nombre" name="nombre" placeholder="Su nombre completo" required autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label for="empresa">Empresa</label>
+              <input type="text" id="empresa" name="empresa" placeholder="Nombre de su empresa" autocomplete="organization">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="telefono">Teléfono <span class="req" aria-hidden="true">*</span></label>
+              <input type="tel" id="telefono" name="telefono" placeholder="+507 0000-0000" required autocomplete="tel">
+            </div>
+            <div class="form-group">
+              <label for="correo">Correo electrónico</label>
+              <input type="email" id="correo" name="correo" placeholder="correo@empresa.com" autocomplete="email">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="servicio">Servicio requerido <span class="req" aria-hidden="true">*</span></label>
+            <select id="servicio" name="servicio" required>
+              <option value="" disabled selected>Seleccione un servicio</option>
+              <option>Videovigilancia IP</option>
+              <option>Control de acceso</option>
+              <option>Redes empresariales</option>
+              <option>WiFi profesional</option>
+              <option>Cableado estructurado</option>
+              <option>Telefonía IP</option>
+              <option>Automatización residencial (Smart Home)</option>
+              <option>Soporte técnico</option>
+              <option>Mantenimiento preventivo</option>
+              <option>Mantenimiento correctivo</option>
+              <option>Diagnóstico técnico</option>
+              <option>Otro</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="mensaje">Mensaje <span class="req" aria-hidden="true">*</span></label>
+            <textarea id="mensaje" name="mensaje" rows="4" placeholder="Describa brevemente lo que necesita..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+            Enviar Mensaje
+          </button>
+
+          <div class="form-success" id="formSuccess" role="alert" aria-live="polite" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            ¡Mensaje enviado! Le contactaremos pronto.
+          </div>
+          <div class="form-error" id="formError" role="alert" aria-live="polite" hidden>
+            Ocurrió un error. Por favor escríbanos directamente por WhatsApp.
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Brand -->
+      <div class="footer-brand">
+        <img src="logo.png" alt="HD Service Solutions" class="footer-logo">
+        <p>Soluciones tecnológicas profesionales para empresas y residencias en Panamá.</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/hdservicesolutionspty" target="_blank" rel="noopener noreferrer" aria-label="Instagram de HD Service Solutions">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://wa.me/50762315402" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp de HD Service Solutions">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Servicios -->
+      <div class="footer-links">
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="#paquetes">Videovigilancia IP</a></li>
+          <li><a href="#paquetes">Control de Acceso</a></li>
+          <li><a href="#paquetes">Redes Empresariales</a></li>
+          <li><a href="#paquetes">Cableado Estructurado</a></li>
+          <li><a href="#paquetes">Telefonía IP</a></li>
+          <li><a href="#paquetes">Smart Home</a></li>
+          <li><a href="#paquetes">Mantenimiento</a></li>
+        </ul>
+      </div>
+
+      <!-- Empresa -->
+      <div class="footer-links">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="#nosotros">Sobre Nosotros</a></li>
+          <li><a href="#beneficios">¿Por qué elegirnos?</a></li>
+          <li><a href="#galeria">Proyectos</a></li>
+          <li><a href="#consejos">Consejos</a></li>
+          <li><a href="#testimonios">Testimonios</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+
+      <!-- Contacto Directo -->
+      <div class="footer-contact">
+        <h4>Contacto Directo</h4>
+        <p>¿Necesita una solución tecnológica? Escríbanos ahora.</p>
+        <a href="https://wa.me/50762315402?text=Hola%20HD%20Service%20Solutions%2C%20deseo%20información%20sobre%20sus%20servicios."
+           class="footer-wa-btn" target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          +507 6231-5402
+        </a>
+        <p class="footer-coverage">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="14" height="14" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          Panamá y Panamá Oeste
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 HD Service Solutions. Todos los derechos reservados.</p>
+      <p>
+        <a href="https://www.instagram.com/hdservicesolutionspty" target="_blank" rel="noopener noreferrer">@hdservicesolutionspty</a>
+      </p>
+    </div>
+  </div>
 </footer>
 
-<a href="https://wa.me/50762315402" class="whatsapp-float" title="Contactar por WhatsApp">💬</a>
+<!-- ═══════════════════════════════════════════
+     WHATSAPP FLOATING BUTTON
+═══════════════════════════════════════════ -->
+<a href="https://wa.me/50762315402?text=Hola%20HD%20Service%20Solutions%2C%20deseo%20información."
+   class="whatsapp-float"
+   target="_blank"
+   rel="noopener noreferrer"
+   aria-label="Contactar por WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+  <span class="whatsapp-tooltip">¡Escríbenos!</span>
+</a>
+
+<!-- ═══════════════════════════════════════════
+     SCRIPTS
+═══════════════════════════════════════════ -->
+<script>
+(function () {
+  'use strict';
+
+  /* ── Sticky Navbar ── */
+  var navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', function () {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  /* ── Mobile Menu ── */
+  var navToggle = document.getElementById('navToggle');
+  var navMenu = document.getElementById('navMenu');
+  navToggle.addEventListener('click', function () {
+    var expanded = navToggle.getAttribute('aria-expanded') === 'true';
+    navToggle.setAttribute('aria-expanded', String(!expanded));
+    navMenu.classList.toggle('open');
+    navToggle.classList.toggle('open');
+  });
+  document.querySelectorAll('.nav-link').forEach(function (link) {
+    link.addEventListener('click', function () {
+      navMenu.classList.remove('open');
+      navToggle.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  /* ── Smooth Scroll ── */
+  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+    anchor.addEventListener('click', function (e) {
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        var offset = 72;
+        var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      }
+    });
+  });
+
+  /* ── Scroll Reveal ── */
+  if ('IntersectionObserver' in window) {
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(function (el) {
+      revealObserver.observe(el);
+    });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function (el) {
+      el.classList.add('revealed');
+    });
+  }
+
+  /* ── Gallery Filter ── */
+  var filterBtns = document.querySelectorAll('.filter-btn');
+  var galleryItems = document.querySelectorAll('.gallery-item');
+
+  filterBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      filterBtns.forEach(function (b) { b.classList.remove('active'); });
+      this.classList.add('active');
+      var filter = this.dataset.filter;
+      galleryItems.forEach(function (item) {
+        var show = filter === 'all' || item.dataset.category === filter;
+        item.style.display = show ? '' : 'none';
+      });
+    });
+  });
+
+  /* ── Contact Form AJAX ── */
+  var form = document.getElementById('contactForm');
+  var submitBtn = document.getElementById('submitBtn');
+  var formSuccess = document.getElementById('formSuccess');
+  var formError = document.getElementById('formError');
+
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando...';
+      formSuccess.hidden = true;
+      formError.hidden = true;
+
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      })
+      .then(function (response) {
+        if (response.ok) {
+          formSuccess.hidden = false;
+          form.reset();
+        } else {
+          throw new Error('Network error');
+        }
+      })
+      .catch(function () {
+        formError.hidden = false;
+      })
+      .finally(function () {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Enviar Mensaje';
+      });
+    });
+  }
+})();
+</script>
+
 </body>
 </html>
